@@ -68,6 +68,8 @@ jobs:
         uses: WyriHaximus/github-action-get-previous-tag@v1.4.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        with:
+          fallback: 0.0.1
 
       - id: next_version
         name: Get next version
