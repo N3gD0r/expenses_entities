@@ -88,5 +88,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          gh release upload '${{ steps.next_version.outputs.v_patch }}' dist/* --repo '${{ github.repository }}
+          gh release upload '${{ steps.next_version.outputs.v_patch }}' dist/** --repo '${{ github.repository }}'
 
