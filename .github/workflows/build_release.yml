@@ -58,10 +58,9 @@ jobs:
 
       - id: sign
         name: Sign package
-        uses: sigstore/gh-action-sigstore-python@v1.2.3
+        uses: sigstore/gh-action-sigstore-python@v2.1.1
         with:
-          inputs: >-
-            ./dist/*.tar.gz
+          inputs: ./dist/*.tar.gz
 
       - id: prev_version
         name: Get previous version
@@ -69,7 +68,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          fallback: 0.0.1
+          fallback: 0.0.0
 
       - id: next_version
         name: Get next version
@@ -89,5 +88,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          gh release upload '${{ steps.next_version.outputs.v_patch }}' dist/** --repo '${{ github.repository }}
+          gh release upload '${{ steps.next_version.outputs.v_patch }}' dist/* --repo '${{ github.repository }}
 
